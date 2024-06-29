@@ -1,0 +1,544 @@
+{
+  "intents1": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "How are you?",
+        "Is anyone there?",
+        "Hey",
+        "Good day",
+        "Hii"
+      ],
+      "responses": [
+        "Hello!",
+        "Hi there!",
+        "Greetings!",
+        "How can I assist you today?"
+      ]
+    },
+    {
+      "tag": "bye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "I am leaving",
+        "Have a nice day"
+      ],
+      "responses": [
+        "Goodbye!",
+        "See you later!",
+        "Have a great day!",
+        "Bye! Come back soon."
+      ]
+    }
+  ],
+  "intents2": [
+    {
+      "tag": "linux_commands",
+      "patterns": [
+        "Tell me about Linux commands",
+        "What are some Linux commands?",
+        "List Linux commands"
+      ],
+      "responses": [
+        "Here are some common Linux commands:\n\n1. ls\n2. cd\n3. pwd\n4. mkdir\n5. cat\n6. chmod\n7. chown\n8. ps\n9. top\n10. kill\n11. pkill\n12. ifconfig\n13. ping\n14. netstat"
+      ],
+      "commands": [
+        {
+          "tag": "ls",
+          "patterns": [
+            "What is the command to list files in Linux?",
+            "How do I list files?",
+            "Show me the command to list files",
+            "ls command",
+            "ls in linux"
+          ],
+          "responses": [
+            "The command to list files in Linux is `ls`. Here are some options for `ls` command:\n\n-a: Include directory entries whose names begin with a dot (.)\n-l: Use a long listing format\n-h: With -l, print sizes in human-readable format (e.g., 1K 234M 2G)\n-R: List subdirectories recursively\n-t: Sort by modification time, newest first\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "cd",
+          "patterns": [
+            "How do I change directories?",
+            "What is the command to change directory?",
+            "cd command"
+          ],
+          "responses": [
+            "The `cd` command is used to change directories. Here are some options for `cd` command:\n\n-cd [directory]: Change to specified directory\n-cd ..: Move one level up\n-cd ~: Move to the home directory\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "pwd",
+          "patterns": [
+            "How do I print the current directory?",
+            "What is the command to show current directory?",
+            "pwd command"
+          ],
+          "responses": [
+            "The `pwd` command prints the current working directory. Here are some options for `pwd` command:\n\n-L: Display the logical current working directory\n-P: Display the physical current working directory (with symbolic links resolved)\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "mkdir",
+          "patterns": [
+            "How do I create a directory?",
+            "What is the command to create a directory?",
+            "mkdir command",
+            "I want information about mkdir command"
+          ],
+          "responses": [
+            "The `mkdir` command creates a new directory. Here are some options for `mkdir` command:\n\n-m: Set file mode (permissions)\n-p: Make parent directories as needed\n-v: Print a message for each created directory\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "cat",
+          "patterns": [
+            "How do I display the contents of a file?",
+            "What is the command to view file contents?",
+            "cat command"
+          ],
+          "responses": [
+            "The `cat` command concatenates and displays the contents of a file. Here are some options for `cat` command:\n\n-n: Number all output lines\n-b: Number non-blank output lines\n-s: Suppress repeated empty output lines\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "chmod",
+          "patterns": [
+            "How do I change file permissions?",
+            "What is the command to change file permissions?",
+            "chmod command"
+          ],
+          "responses": [
+            "The `chmod` command changes the file permissions. Here are some options for `chmod` command:\n\n-R: Change files and directories recursively\n-v: Output a diagnostic for every file processed\n-c: Like -v, but report only when a change is made\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "chown",
+          "patterns": [
+            "How do I change file owner?",
+            "What is the command to change file owner?",
+            "chown command"
+          ],
+          "responses": [
+            "The `chown` command changes the file owner. Here are some options for `chown` command:\n\n-R: Operate on files and directories recursively\n-v: Verbosely explain what is being done\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "ps",
+          "patterns": [
+            "How do I display active processes?",
+            "What is the command to show active processes?",
+            "ps command"
+          ],
+          "responses": [
+            "The `ps` command displays active processes. Here are some options for `ps` command:\n\n-e: Select all processes\n-f: Full format listing\n-u [user]: Display processes of a specific user\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "top",
+          "patterns": [
+            "How do I display real-time process information?",
+            "What is the command for real-time process monitoring?",
+            "top command"
+          ],
+          "responses": [
+            "The `top` command provides a real-time view of the system's processes. Here are some options for `top` command:\n\n-d: Delay between updates\n-p [pid]: Monitor specific PIDs\n-u [user]: Monitor processes for a specific user\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "kill",
+          "patterns": [
+            "How do I kill a process?",
+            "What is the command to terminate a process?",
+            "kill command",
+            "How to kill a process in linux"
+          ],
+          "responses": [
+            "The `kill` command sends a signal to a process to terminate it. Here are some options for `kill` command:\n\n-s [signal]: Send a specific signal\n-l: List available signal choices\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "pkill",
+          "patterns": [
+            "How do I kill a process by name?",
+            "What is the command to terminate processes by name?",
+            "pkill command"
+          ],
+          "responses": [
+            "The `pkill` command sends a signal to processes based on their name. Here are some options for `pkill` command:\n\n-e: Display the process name in verbose mode\n-f: Match against full argument lists\n-s [signal]: Specify the signal to send\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "ifconfig",
+          "patterns": [
+            "How do I configure a network interface?",
+            "What is the command to display network configuration?",
+            "ifconfig command"
+          ],
+          "responses": [
+            "The `ifconfig` command is used to configure a network interface and display network configuration. Here are some options for `ifconfig` command:\n\n-a: Display all interfaces\n-up: Enable the specified interface\n-down: Disable the specified interface\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "ping",
+          "patterns": [
+            "How do I test network connectivity?",
+            "What is the command to send ICMP ECHO_REQUEST to network hosts?",
+            "ping command"
+          ],
+          "responses": [
+            "The `ping` command tests network connectivity. Here are some options for `ping` command:\n\n-c [count]: Send a specific number of packets\n-i [interval]: Wait interval seconds between sending each packet\n-t [ttl]: Set the IP Time to Live\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "netstat",
+          "patterns": [
+            "How do I display network connections?",
+            "What is the command to show network status?",
+            "netstat command"
+          ],
+          "responses": [
+            "The `netstat` command displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships. Here are some options for `netstat` command:\n\n-a: Show all sockets\n-t: Display TCP connections\n-u: Display UDP connections\n-i: Display network interfaces\n--help: Display help information"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "commands_help",
+      "help": [
+        {
+          "tag": "ls_help",
+          "patterns": [
+            "How to get help for ls command?",
+            "Explain the --help option in ls",
+            "ls --help",
+            "Explain the help for ls command in linux"
+          ],
+          "responses": [
+            "You can get help for the `ls` command by typing `ls --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "cd_help",
+          "patterns": [
+            "How to get help for cd command?",
+            "Explain the --help option in cd",
+            "cd --help"
+          ],
+          "responses": [
+            "The `cd` command does not have a `--help` option, but you can use `man cd` for more information."
+          ]
+        },
+        {
+          "tag": "pwd_help",
+          "patterns": [
+            "How to get help for pwd command?",
+            "Explain the --help option in pwd",
+            "pwd --help"
+          ],
+          "responses": [
+            "You can get help for the `pwd` command by typing `pwd --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "mkdir_help",
+          "patterns": [
+            "How to get help for mkdir command?",
+            "Explain the --help option in mkdir",
+            "mkdir --help"
+          ],
+          "responses": [
+            "You can get help for the `mkdir` command by typing `mkdir --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "cat_help",
+          "patterns": [
+            "How to get help for cat command?",
+            "Explain the --help option in cat",
+            "cat --help"
+          ],
+          "responses": [
+            "You can get help for the `cat` command by typing `cat --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "chmod_help",
+          "patterns": [
+            "How to get help for chmod command?",
+            "Explain the --help option in chmod",
+            "chmod --help"
+          ],
+          "responses": [
+            "You can get help for the `chmod` command by typing `chmod --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "chown_help",
+          "patterns": [
+            "How to get help for chown command?",
+            "Explain the --help option in chown",
+            "chown --help"
+          ],
+          "responses": [
+            "You can get help for the `chown` command by typing `chown --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "ps_help",
+          "patterns": [
+            "How to get help for ps command?",
+            "Explain the --help option in ps",
+            "ps --help"
+          ],
+          "responses": [
+            "You can get help for the `ps` command by typing `ps --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "top_help",
+          "patterns": [
+            "How to get help for top command?",
+            "Explain the --help option in top",
+            "top --help"
+          ],
+          "responses": [
+            "You can get help for the `top` command by typing `top --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "kill_help",
+          "patterns": [
+            "How to get help for kill command?",
+            "Explain the --help option in kill",
+            "kill --help"
+          ],
+          "responses": [
+            "You can get help for the `kill` command by typing `kill --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "pkill_help",
+          "patterns": [
+            "How to get help for pkill command?",
+            "Explain the --help option in pkill",
+            "pkill --help"
+          ],
+          "responses": [
+            "You can get help for the `pkill` command by typing `pkill --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "ifconfig_help",
+          "patterns": [
+            "How to get help for ifconfig command?",
+            "Explain the --help option in ifconfig",
+            "ifconfig --help"
+          ],
+          "responses": [
+            "You can get help for the `ifconfig` command by typing `ifconfig --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "ping_help",
+          "patterns": [
+            "How to get help for ping command?",
+            "Explain the --help option in ping",
+            "ping --help"
+          ],
+          "responses": [
+            "You can get help for the `ping` command by typing `ping --help`. This will display all available options and their descriptions."
+          ]
+        },
+        {
+          "tag": "netstat_help",
+          "patterns": [
+            "How to get help for netstat command?",
+            "Explain the --help option in netstat",
+            "netstat --help"
+          ],
+          "responses": [
+            "You can get help for the `netstat` command by typing `netstat --help`. This will display all available options and their descriptions."
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "commands_options",
+      "options": [
+        {
+          "tag": "ls_options",
+          "patterns": [
+            "What are the options for the ls command?",
+            "Explain the options for ls command",
+            "List the options for ls command",
+            "What does --help do for ls?"
+          ],
+          "responses": [
+            "Here are some options for `ls` command:\n\n-a: Include directory entries whose names begin with a dot (.)\n-l: Use a long listing format\n-h: With -l, print sizes in human-readable format (e.g., 1K 234M 2G)\n-R: List subdirectories recursively\n-t: Sort by modification time, newest first\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "cd_options",
+          "patterns": [
+            "What are the options for the cd command?",
+            "Explain the options for cd command",
+            "List the options for cd command",
+            "What does --help do for cd?"
+          ],
+          "responses": [
+            "The `cd` command is used to change directories. Here are some options for `cd` command:\n\n-cd [directory]: Change to specified directory\n-cd ..: Move one level up\n-cd ~: Move to the home directory\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "pwd_options",
+          "patterns": [
+            "What are the options for the pwd command?",
+            "Explain the options for pwd command",
+            "List the options for pwd command",
+            "What does --help do for pwd?"
+          ],
+          "responses": [
+            "The `pwd` command prints the current working directory. Here are some options for `pwd` command:\n\n-L: Print the value of $PWD if it names the current working directory\n-P: Print the physical directory, without any symbolic links\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "mkdir_options",
+          "patterns": [
+            "What are the options for the mkdir command?",
+            "Explain the options for mkdir command",
+            "List the options for mkdir command",
+            "What does --help do for mkdir?"
+          ],
+          "responses": [
+            "The `mkdir` command creates a new directory. Here are some options for `mkdir` command:\n\n-p: Make parent directories as needed\n-v: Print a message for each created directory\n-m: Set file mode (permissions) of the new directory\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "cat_options",
+          "patterns": [
+            "What are the options for the cat command?",
+            "Explain the options for cat command",
+            "List the options for cat command",
+            "What does --help do for cat?"
+          ],
+          "responses": [
+            "The `cat` command concatenates and displays the contents of a file. Here are some options for `cat` command:\n\n-n: Number all output lines\n-b: Number nonempty output lines\n-s: Suppress repeated empty output lines\n-E: Display $ at the end of each line\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "chmod_options",
+          "patterns": [
+            "What are the options for the chmod command?",
+            "Explain the options for chmod command",
+            "List the options for chmod command",
+            "What does --help do for chmod?"
+          ],
+          "responses": [
+            "The `chmod` command changes file permissions. Here are some options for `chmod` command:\n\n-R: Change files and directories recursively\n-v: Output a diagnostic for every file processed\n-c: Like -v, but report only when a change is made\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "chown_options",
+          "patterns": [
+            "What are the options for the chown command?",
+            "Explain the options for chown command",
+            "List the options for chown command",
+            "What does --help do for chown?"
+          ],
+          "responses": [
+            "The `chown` command changes file owner and group. Here are some options for `chown` command:\n\n-R: Operate on files and directories recursively\n-v: Verbosely describe ownership changes\n--from: Change the owner and/or group of each file only if its current owner and/or group match those specified here\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "ps_options",
+          "patterns": [
+            "What are the options for the ps command?",
+            "Explain the options for ps command",
+            "List the options for ps command",
+            "What does --help do for ps?"
+          ],
+          "responses": [
+            "The `ps` command displays active processes. Here are some options for `ps` command:\n\n-e: Select all processes\n-f: Do full-format listing\n-l: Display long format\n-u: Display processes for a specific user\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "top_options",
+          "patterns": [
+            "What are the options for the top command?",
+            "Explain the options for top command",
+            "List the options for top command",
+            "What does --help do for top?"
+          ],
+          "responses": [
+            "The `top` command provides a real-time view of the system's processes. Here are some options for `top` command:\n\n-d: Delay time interval between updates\n-n: Number of iterations to show\n-b: Batch mode operation\n-u: Show specific user's processes\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "kill_options",
+          "patterns": [
+            "What are the options for the kill command?",
+            "Explain the options for kill command",
+            "List the options for kill command",
+            "What does --help do for kill?"
+          ],
+          "responses": [
+            "The `kill` command sends a signal to a process to terminate it. Here are some options for `kill` command:\n\n-l: List signal names\n-s: Specify the signal to send\n-p: Print the process ID without sending a signal\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "pkill_options",
+          "patterns": [
+            "What are the options for the pkill command?",
+            "Explain the options for pkill command",
+            "List the options for pkill command",
+            "What does --help do for pkill?"
+          ],
+          "responses": [
+            "The `pkill` command sends a signal to processes based on their name. Here are some options for `pkill` command:\n\n-e: List all processes matched\n-f: Match against the full argument list\n-i: Ignore case distinctions\n-x: Only match processes whose name exactly matches the pattern\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "ifconfig_options",
+          "patterns": [
+            "What are the options for the ifconfig command?",
+            "Explain the options for ifconfig command",
+            "List the options for ifconfig command",
+            "What does --help do for ifconfig?"
+          ],
+          "responses": [
+            "The `ifconfig` command is used to configure network interfaces. Here are some options for `ifconfig` command:\n\n-a: Display all interfaces which are currently available\n-s: Display a short list\n-up: Activate the interface\n-down: Deactivate the interface\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "ping_options",
+          "patterns": [
+            "What are the options for the ping command?",
+            "Explain the options for ping command",
+            "List the options for ping command",
+            "What does --help do for ping?"
+          ],
+          "responses": [
+            "The `ping` command tests network connectivity. Here are some options for `ping` command:\n\n-c: Stop after sending count ECHO_REQUEST packets\n-i: Wait interval seconds between sending each packet\n-t: Set the IP Time to Live\n-v: Verbose output\n--help: Display help information"
+          ]
+        },
+        {
+          "tag": "netstat_options",
+          "patterns": [
+            "What are the options for the netstat command?",
+            "Explain the options for netstat command",
+            "List the options for netstat command",
+            "What does --help do for netstat?"
+          ],
+          "responses": [
+            "The `netstat` command displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships. Here are some options for `netstat` command:\n\n-a: Show all sockets\n-r: Display the kernel routing tables\n-i: Display a table of all network interfaces\n-s: Display summary statistics for each protocol\n--help: Display help information"
+          ]
+        }
+      ]
+    }
+  ]
+}

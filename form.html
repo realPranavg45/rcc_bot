@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Query Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .btn-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000; /* Ensure button stays above other elements */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #8B0000; /* Dark red color */
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #600000;
+        }
+
+        .prompt-container {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 70px; /* Adjust position above the button */
+            left: 20px;
+            z-index: 999; /* Ensure prompt appears above other content */
+            width: 300px; /* Adjust width as needed */
+            max-width: 100%; /* Limit maximum width */
+        }
+
+        .prompt-container.active {
+            display: block;
+        }
+
+        .prompt-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .prompt-container label {
+            margin-bottom: 10px;
+        }
+
+        .prompt-container select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            appearance: none; /* Remove default styling */
+            -webkit-appearance: none; /* Safari and Chrome */
+            -moz-appearance: none; /* Firefox */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12L4 6h12z"/></svg>'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            cursor: pointer;
+        }
+
+        .form-container {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 70px; /* Adjust position above the button */
+            left: 20px;
+            z-index: 999; /* Ensure form appears above other content */
+            width: 300px; /* Adjust width as needed */
+            max-width: 100%; /* Limit maximum width */
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container label {
+            margin-bottom: 10px;
+        }
+
+        .form-container textarea {
+            padding: 10px;
+            font-size: 14px; /* Decreased font size */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 1px; /* Minimum height for the textarea */
+            resize: none;
+            width: 100%; /* Full width for textareas */
+            box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+            margin-bottom: 10px; /* Space between textareas */
+        }
+
+        .form-container .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .form-container input[type="submit"],
+        .form-container button {
+            width: 150px; /* Set button width to 150px */
+            cursor: pointer;
+            background-color: #8B0000; /* Dark red color */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .form-container input[type="submit"]:hover,
+        .form-container button:hover {
+            background-color: #600000;
+        }
+
+        .form-container .clear-btn {
+            background-color: #808080; /* Gray color for clear button */
+        }
+
+        .form-container .clear-btn:hover {
+            background-color: #505050;
+        }
+
+        .form-container .add-query-btn {
+            background-color: #4CAF50; /* Green color for add query button */
+        }
+
+        .form-container .add-query-btn:hover {
+            background-color: #45A049;
+        }
+
+        .form-container .remove-query-btn {
+            background-color: #FF6347; /* Tomato color for remove query button */
+        }
+
+        .form-container .remove-query-btn:hover {
+            background-color: #FF4500;
+        }
+
+        #query-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #query-container .query-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px; /* Space between query boxes */
+        }
+
+        #query-container textarea {
+            margin-right: 10px; /* Space between textarea and button */
+        }
+
+        #query-container button {
+            background-color: #4CAF50; /* Green color for add query button */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-start; /* Align button to the top of the textarea */
+        }
+
+        #query-container button:hover {
+            background-color: #45A049;
+        }
+
+        @media (max-width: 600px) {
+            .prompt-container,
+            .form-container {
+                width: 90%;
+                max-width: 100%;
+                left: 5%; /* Adjust left position for smaller screens */
+            }
+        }
+    </style>
+    <script>
+        function showPrompt() {
+            document.querySelector('.prompt-container').classList.add('active');
+        }
+
+        function showForm() {
+            const application = document.getElementById('application').value;
+            const formContainer = document.querySelector('.form-container');
+
+            // Check if default option is selected
+            if (application === '') {
+                alert('Please choose an application.');
+                return; // Exit function if default option is selected
+            }
+
+            let formContent = '';
+            if (application === 'linux') {
+                formContent = `
+                    <label for="commands">Command:</label>
+                    <textarea id="commands" name="commands"></textarea>
+                    <label for="queries">Probable Queries:</label>
+                    <div id="query-container">
+                        <div class="query-box">
+                            <textarea name="queries"></textarea>
+                            <button type="button" class="add-query-btn" onclick="addQuery()">Add Query</button>
+                        </div>
+                    </div>
+                    <label for="solutions">Probable Solutions:</label>
+                    <textarea id="solutions" name="solutions"></textarea>
+                `;
+            } else {
+                formContent = `
+                    <label for="queries">Probable Query:</label>
+                    <div id="query-container">
+                        <div class="query-box">
+                            <textarea name="queries"></textarea>
+                            <button type="button" class="add-query-btn" onclick="addQuery()">Add Query</button>
+                        </div>
+                    </div>
+                    <label for="solutions">Probable Solution:</label>
+                    <textarea id="solutions" name="solutions"></textarea>
+                `;
+            }
+
+            formContent += `
+                <div class="form-actions">
+                    <input type="submit" value="Submit">
+                    <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+                    <button type="button" onclick="goBack()">Back</button>
+                </div>
+            `;
+
+            formContainer.innerHTML = `<form>${formContent}</form>`;
+            document.querySelector('.prompt-container').classList.remove('active');
+            formContainer.classList.add('active');
+        }
+
+        function addQuery() {
+            const queryContainer = document.getElementById('query-container');
+            const queryBox = document.createElement('div');
+            queryBox.className = 'query-box';
+            queryBox.innerHTML = `
+                <textarea name="queries"></textarea>
+                <button type="button" class="remove-query-btn" onclick="removeQuery(this)">Remove Query</button>
+            `;
+            queryContainer.appendChild(queryBox);
+        }
+
+        function removeQuery(button) {
+            const queryBox = button.parentElement;
+            queryBox.remove();
+        }
+
+        function clearForm() {
+            document.querySelectorAll('.form-container textarea').forEach(textarea => textarea.value = '');
+        }
+
+        function goBack() {
+            document.querySelector('.form-container').classList.remove('active');
+            document.querySelector('.prompt-container').classList.add('active');
+        }
+
+        function cancelForm() {
+            document.querySelector('.prompt-container').classList.remove('active');
+        }
+    </script>
+</head>
+<body>
+    <!-- Button that shows the prompt -->
+    <div class="btn-container">
+        <button class="btn" onclick="showPrompt()">ADD</button>
+    </div>
+
+    <!-- Prompt container -->
+    <div class="prompt-container">
+        <form onsubmit="event.preventDefault(); showForm();">
+            <label for="application">Which Application to Perform Queries on?</label>
+            <select id="application" name="application">
+                <option value="" selected disabled>Choose an application</option>
+                <option value="linux">Linux Application</option>
+                <option value="cgg">CGG Application</option>
+                <option value="paradigm">Paradigm Application</option>
+            </select>
+            <input type="submit" value="Next">
+            <button type="button" onclick="cancelForm()">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Form container -->
+    <div class="form-container"></div>
+</body>
+</html>

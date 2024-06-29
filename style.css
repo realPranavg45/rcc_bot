@@ -1,0 +1,628 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.chatbot {
+    position: fixed;
+    right: 40px;
+    bottom: 120px;
+    width: 420px;
+    overflow: hidden;
+    transform: scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+    background-color: #fff;
+    border-radius: 15px;
+    transform-origin: bottom right;
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+                0 32px 64px -48px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+}
+
+.show_chatbot .chatbot {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.chatbot header {
+    background: #840c0c;
+    padding: 16px 0;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.chatbot header h2 {
+    font-size: 1.4rem;
+}
+
+.chatbox {
+    height: 420px;
+    overflow-y: auto;
+    padding: 30px 20px 100px;
+}
+
+.chatbox .chat {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.chatbox .icon {
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 4px;
+    margin-right: 10px;
+    background: white url('/static/images/ongc_logo.png') center center/cover no-repeat;
+}
+
+.chatbox .chat-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.chatbox .chat-content p {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    background: #f2f2f2;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.chat-options {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    background: #f2f2f2;
+    margin-bottom: 5px;
+    max-width: 75%;
+    word-wrap: break-word;
+    /* white-space: pre-wrap; */
+}
+
+.chat-options .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chat-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+.chat-options label {
+    cursor: pointer;
+}
+
+.outgoing {
+    justify-content: flex-end;
+    margin: 20px 0;
+    color: white;
+}
+
+.outgoing p {
+    background-color: #840c0c;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    max-width: 75%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.incoming p {
+    background-color: #f2f2f2;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 10px 10px 0 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    max-width: 75%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.chat_input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    background: #fff;
+    padding: 5px 20px;
+    border-top: 1px solid #ccc;
+}
+
+.chat_input textarea {
+    height: 55px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    resize: none;
+    padding: 16px 15px 16px 0;
+    max-height: 180px;
+}
+
+.chat_input span {
+    font-size: 1.35rem;
+    cursor: pointer;
+    align-self: flex-end;
+    line-height: 55px;
+    height: 55px;
+    visibility: hidden;
+}
+
+.chat_input textarea:valid ~ span {
+    visibility: visible;
+}
+
+.chatbot_toggler {
+    position: fixed;
+    right: 40px;
+    bottom: 35px;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: white url('/static/images/ongc_logo.png') center center/cover no-repeat;
+    animation: pulse 1.5s infinite, bounce 1.5s infinite;
+    transition: all 0.2s ease;
+}
+
+.chat p.error {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.show_chatbot .chatbot_toggler {
+    transform: rotate(90deg);
+    background: rgb(132, 12, 12);
+    background-image: none;
+}
+
+.chatbot_toggler span {
+    position: absolute;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.chatbot_toggler span:first-child {
+    opacity: 1;
+}
+
+.show_chatbot .chatbot_toggler span:first-child {
+    opacity: 0;
+}
+
+.chatbot_toggler span:last-child {
+    opacity: 0;
+}
+
+.show_chatbot .chatbot_toggler span:last-child {
+    opacity: 1;
+}
+
+.show_chatbot .chatbot_toggler {
+    animation: none;
+}
+
+.chatbox {
+    font-family: cursive;
+    font-size: large;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(132, 12, 12, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(132, 12, 12, 0.9);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        transition: all 1s ease;
+    }
+    50% {
+        transform: translateY(-10px);
+        transition: all 80s ease;
+    }
+}
+
+.chatbot header span {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    cursor: pointer;
+    display: none;
+    transform: translateY(-50%);
+}
+
+@media(max-width: 450px) {
+    .chatbot {
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .chatbox {
+        height: 90%;
+    }
+
+    .chatbot header span {
+        display: block;
+    }
+}
+
+/*mine code*/
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align content horizontally */
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    overflow: hidden;
+    background-color: rgba(209, 202, 202, 0.5);
+    padding: 22px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+
+.header img.logo {
+    max-width: 95px; /* Adjust the value to make the logo smaller */
+    height: auto;
+    position: absolute;
+    left: 20px; /* Adjust the value to place the logo at the desired position */
+}
+
+.header .header-content {
+    text-align: center;
+    flex-grow: 1;
+    color: #8B0000;
+    margin-top:2px;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 1000px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    text-align: justify;
+    line-height: 1.6;
+    margin-top: 2%;
+
+}
+
+.card h2 {
+    color: #8B0000;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.card ul li {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.card ul li strong {
+    color: #8B0000;
+}
+
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .header-right {
+        float: none;
+    }
+}
+
+.btn-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000; /* Ensure button stays above other elements */
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #8B0000; /* Dark red color */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.btn:hover {
+    background-color: #600000;
+}
+
+
+.circle-btn {
+    position: absolute;
+    top: -15px;
+    left: -15px; /* Adjusted for circular shape */
+    background-color: darkred;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.circle-btn:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    background-color: #600000; /* Darker red on hover */
+}
+.prompt-container {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 70px; /* Adjust position above the button */
+    left: 20px;
+    z-index: 999; /* Ensure prompt appears above other content */
+    width: 300px; /* Adjust width as needed */
+    max-width: 100%; /* Limit maximum width */
+}
+
+.prompt-container.active {
+    display: block;
+}
+
+.prompt-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt-container label {
+    margin-bottom: 10px;
+}
+
+.prompt-container select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove default styling */
+    -webkit-appearance: none; /* Safari and Chrome */
+    -moz-appearance: none; /* Firefox */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12L4 6h12z"/></svg>'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    cursor: pointer;
+}
+
+.prompt-container .next {
+    height: 30px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: auto; /* Align to the right */
+    margin-right: auto; /* Align to the left */
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.prompt-container .next:hover {
+    background-color: #600000; /* Darker red on hover */
+}
+
+.prompt-container .next:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+.prompt-container .next:active {
+    transform: scale(0.95); /* Slight scale down on click */
+}
+
+
+
+.form-container {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 70px; /* Adjust position above the button */
+    left: 20px;
+    z-index: 999; /* Ensure form appears above other content */
+    width: 300px; /* Adjust width as needed */
+    max-width: 100%; /* Limit maximum width */
+}
+
+.form-container.active {
+    display: block;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    margin-bottom: 10px;
+}
+
+.form-container textarea {
+    padding: 10px;
+    font-size: 14px; /* Decreased font size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 1px; /* Minimum height for the textarea */
+    resize: none;
+    width: 100%; /* Full width for textareas */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    margin-bottom: 10px; /* Space between textareas */
+}
+
+.form-container .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.form-container input[type="submit"],
+.sub .form-container button {
+    width: 150px; /* Set button width to 150px */
+    cursor: pointer;
+    background-color: #8B0000; /* Dark red color */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.form-container input[type="submit"]:hover,
+.form-container button:hover {
+    background-color: #600000;
+}
+
+.form-container .clear-btn {
+    width: 150px; /* Set button width to 150px */
+    cursor: pointer;
+    background-color: #808080; /* Dark red color */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.form-container .clear-btn:hover {
+    background-color: #505050;
+}
+
+.form-container .add-query-btn {
+    background-color: #4CAF50; /* Green color for add query button */
+}
+
+.form-container .add-query-btn:hover {
+    background-color: #45A049;
+}
+
+.form-container .remove-query-btn {
+    background-color: #FF6347; /* Tomato color for remove query button */
+}
+
+.form-container .remove-query-btn:hover {
+    background-color: #FF4500;
+}
+
+#query-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#query-container .query-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Space between query boxes */
+}
+
+#query-container textarea {
+    margin-right: 10px; /* Space between textarea and button */
+}
+
+#query-container button {
+    background-color: #4CAF50; /* Green color for add query button */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-start; /* Align button to the top of the textarea */
+}
+
+#query-container button:hover {
+    background-color: #45A049;
+}
+
+@media (max-width: 600px) {
+    .prompt-container,
+    .form-container {
+        width: 90%;
+        max-width: 100%;
+        left: 5%; /* Adjust left position for smaller screens */
+    }
+
+
+}

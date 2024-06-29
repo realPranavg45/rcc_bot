@@ -1,0 +1,274 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hey",
+                "How are you",
+                "Is anyone there?",
+                "Hello",
+                "Good day"
+            ],
+            "responses": [
+                "Hey :-)",
+                "Hello, thanks for visiting",
+                "Hi there, what can I do for you?",
+                "Hi there, how can I help?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye"
+            ],
+            "responses": [
+                "See you later, thanks for visiting",
+                "Have a nice day",
+                "Bye! Come back again soon."
+            ]
+        },
+        {
+            "tag": "linux_ls",
+            "patterns": [
+                "What is the command to list files/directories in Linux?",
+                "How do I list files/directories in Linux?",
+                "How can I see the files/directories in a directory?",
+                "Show me the files/directories in a folder",
+                "Show me the command to list files/directories",
+                "ls command",
+                "ls in linux",
+                "ls --help",
+                "How do I list hidden files in a directory in Linux?",
+                "How can I get more details about files in a directory in Linux?"
+            ],
+            "responses": [
+                "The command to list files/directories in Linux is `ls`. Here are some options for the `ls` command:\n\n-a: Include directory entries whose names begin with a dot (.) to list hidden files\n-l: Use a long listing format for detailed information about files\n-h: With -l, print sizes in human-readable format (e.g., 1K 234M 2G)\n-R: List subdirectories recursively\n-t: Sort by modification time, newest first\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_cd",
+            "patterns": [
+                "How do I change directories in Linux?",
+                "What command do I use to move to a different folder?",
+                "Change directory command in Linux?",
+                "How do I change directories?",
+                "What is the command to change directory?",
+                "cd command",
+                "cd in linux",
+                "cd --help",
+                "How do I go back to the previous directory in Linux?",
+                "How can I quickly go to my home directory in Linux?"
+            ],
+            "responses": [
+                "The `cd` command is used to change directories. Here are some common uses of the `cd` command:\n\n-cd [directory]: Change to the specified directory\n-cd ..: Move one level up to the parent directory\n-cd ~: Move to the home directory\n-cd -: Switch back to the previous directory\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_pwd",
+            "patterns": [
+                "What is the command to show the current directory in Linux?",
+                "How do I find out which directory I'm in?",
+                "Print working directory command in Linux?",
+                "How do I print the current directory?",
+                "What is the command to show current directory?",
+                "pwd command",
+                "pwd in linux",
+                "pwd --help",
+                "What does `pwd` stand for in Linux?"
+            ],
+            "responses": [
+                "The `pwd` command prints the current working directory. Here are some options for the `pwd` command:\n\n-L: Display the logical current working directory\n-P: Display the physical current working directory (with symbolic links resolved)\n`pwd` stands for 'print working directory'.\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_mkdir",
+            "patterns": [
+                "How do I create a directory in Linux?",
+                "What command is used to make a new folder?",
+                "Create directory command in Linux?",
+                "How do I create a directory?",
+                "What is the command to create a directory?",
+                "mkdir command",
+                "I want information about mkdir command",
+                "mkdir in linux",
+                "mkdir --help",
+                "How do I create multiple directories at once in Linux?"
+            ],
+            "responses": [
+                "The `mkdir` command creates a new directory. Here are some options for the `mkdir` command:\n\n-m: Set file mode (permissions) when creating the directory\n-p: Make parent directories as needed\n-v: Print a message for each created directory\nTo create multiple directories at once, use the command with braces: `mkdir -p dir1/dir2/dir3` to create `dir1`, `dir2` within `dir1`, and `dir3` within `dir2`.\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_cat",
+            "patterns": [
+                "How can I view the contents of a file in Linux?",
+                "What is the command to read a file in Linux?",
+                "Show me the contents of a file in Linux?",
+                "How do I display the contents of a file?",
+                "What is the command to view file contents?",
+                "cat command",
+                "cat in linux",
+                "cat --help",
+                "How can I view a file with line numbers in Linux?"
+            ],
+            "responses": [
+                "The `cat` command concatenates and displays the contents of a file. Here are some options for the `cat` command:\n\n-n: Number all output lines to view the file with line numbers\n-b: Number non-blank output lines\n-s: Suppress repeated empty output lines\nTo view a file with line numbers, use `cat -n filename`.\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_chmod",
+            "patterns": [
+                "How do I change file permissions in Linux?",
+                "What command is used to modify file permissions?",
+                "Change file permissions command in Linux?",
+                "How do I change file permissions?",
+                "What is the command to change file permissions?",
+                "chmod command",
+                "chmod in linux",
+                "chmod --help",
+                "What do the numbers mean in the `chmod` command?"
+            ],
+            "responses": [
+                "The `chmod` command changes the file permissions. Here are some options for the `chmod` command:\n\n-R: Change files and directories recursively\n-v: Output a diagnostic for every file processed\n-c: Like -v, but report only when a change is made\n--help: Display help information\nThe numbers in the `chmod` command represent the permissions: 4 for read (r), 2 for write (w), and 1 for execute (x). For example, `chmod 755 filename` gives the owner full permissions (7), and the group and others read and execute permissions (5 each)."
+            ]
+        },
+        {
+            "tag": "linux_chown",
+            "patterns": [
+                "What is the command to change file ownership in Linux?",
+                "How can I change the owner of a file in Linux?",
+                "Change file ownership command in Linux?",
+                "How do I change file owner?",
+                "What is the command to change file owner?",
+                "chown command",
+                "chown in linux",
+                "chown --help",
+                "How do I change both the owner and group of a file in Linux?"
+            ],
+            "responses": [
+                "The `chown` command changes the file owner and group. Here are some options for the `chown` command:\n\n-R: Operate on files and directories recursively\n-v: Verbosely explain what is being done\n--help: Display help information\nTo change both the owner and group of a file, use `chown owner:group filename`."
+            ]
+        },
+        {
+            "tag": "linux_ps",
+            "patterns": [
+                "How can I see the running processes in Linux?",
+                "What command is used to display processes?",
+                "List processes command in Linux?",
+                "How do I display active processes?",
+                "What is the command to show active processes?",
+                "ps command",
+                "ps in linux",
+                "ps --help",
+                "How do I see all processes running by a specific user in Linux?"
+            ],
+            "responses": [
+                "The `ps` command displays active processes. Here are some options for the `ps` command:\n\n-e: Select all processes\n-f: Full format listing\n-u [user]: Display processes of a specific user\nTo see all processes running by a specific user, use `ps -u username`.\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_top",
+            "patterns": [
+                "What command gives a dynamic view of system processes in Linux?",
+                "How do I monitor processes in real-time in Linux?",
+                "Display top processes command in Linux?",
+                "How do I display real-time process information?",
+                "What is the command for real-time process monitoring?",
+                "top command",
+                "top in linux",
+                "top --help",
+                "How can I sort the processes by memory usage in the `top` command?"
+            ],
+            "responses": [
+                "The `top` command provides a real-time view of the system's processes. Here are some options for the `top` command:\n\n-d: Delay between updates\n-p [pid]: Monitor specific PIDs\n-u [user]: Monitor processes for a specific user\nTo sort the processes by memory usage, press `M` while `top` is running.\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_kill",
+            "patterns": [
+                "How do I terminate a process in Linux?",
+                "What is the command to end a process in Linux?",
+                "Terminate process command in Linux?",
+                "How do I kill a process?",
+                "What is the command to terminate a process?",
+                "kill command",
+                "How to kill a process in linux",
+                "kill in linux",
+                "kill --help",
+                "How do I find the process ID (PID) to use with the `kill` command?"
+            ],
+            "responses": [
+                "The `kill` command terminates a process. Here are some options for the `kill` command:\n\n-9: Forcefully terminate a process\n-l: List all signal names\nTo find the process ID (PID) to use with the `kill` command, you can use the `ps` or `top` command.\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_pkill",
+            "patterns": [
+                "What is the command to kill processes by name in Linux?",
+                "How can I end processes with a specific name in Linux?",
+                "Kill processes by name command in Linux?",
+                "How do I kill a process by name?",
+                "What is the command to terminate processes by name?",
+                "pkill command",
+                "pkill in linux",
+                "pkill --help"
+            ],
+            "responses": [
+                "The `pkill` command sends a signal to processes based on their name. Here are some options for `pkill` command:\n\n-e: Display the process name in verbose mode\n-f: Match against full argument lists\n-s [signal]: Specify the signal to send\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_ifconfig",
+            "patterns": [
+                "How do I get the IP address configuration in Linux?",
+                "What command shows network configuration in Linux?",
+                "Display IP configuration command in Linux?",
+                "How do I configure a network interface?",
+                "What is the command to display network configuration?",
+                "ifconfig command",
+                "ifconfig in linux",
+                "ifconfig --help"
+            ],
+            "responses": [
+                "The `ifconfig` command is used to configure a network interface and display network configuration. Here are some options for `ifconfig` command:\n\n-a: Display all interfaces\n-up: Enable the specified interface\n-down: Disable the specified interface\n-netmask [address]: Set the IP netmask\n-broadcast [address]: Set the broadcast address\n--help: Display help information\n\nNote: In many mordern Linux distributions, the `ip` command is preferred for network configuration. For example, `ip addr show` can be used to display IP address information."
+            ]
+        },
+        {
+            "tag": "linux_ping",
+            "patterns": [
+                "What command is used to test network connectivity in Linux?",
+                "How do I check if my network connection is working in Linux?",
+                "Test network connectivity command in Linux?",
+                "How do I test network connectivity?",
+                "What is the command to send ICMP ECHO_REQUEST to network hosts?",
+                "ping command",
+                "ping in linux",
+                "ping --help",
+                "How do I stop a `ping` command that is running?"
+            ],
+            "responses": [
+                "The `ping` command tests the network connectivity to a server. Here are some options for the `ping` command:\n\n-c [count]: Send a specific number of packets\n-i [interval]: Set the interval between packets\n-s [size]: Set the packet size\nTo stop a `ping` command that is running, press `Ctrl+C`.\n--help: Display help information"
+            ]
+        },
+        {
+            "tag": "linux_netstat",
+            "patterns": [
+                "How can I check network statistics in Linux?",
+                "What command shows network connections in Linux?",
+                "Display network statistics command in Linux?",
+                "How do I display network connections?",
+                "What is the command to show network status?",
+                "netstat command",
+                "netstat in linux",
+                "netstat --help",
+                "How can I see the current network connections in Linux?"
+            ],
+            "responses": [
+                "The `netstat` command displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships. Here are some options for the `netstat` command:\n\n-a: Show all connections (listening and non-listening)\n-t: Display TCP connections\n-u: Display UDP connections\n-p: Show the PID and name of the program to which each socket belongs\nTo see the current network connections, use `netstat -an`.\n--help: Display help information"
+            ]
+        }
+    ]
+}
